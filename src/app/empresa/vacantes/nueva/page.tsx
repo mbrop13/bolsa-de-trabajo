@@ -14,7 +14,7 @@ import {
   JOB_TYPES,
 } from "@/lib/constants";
 import { demoCategories } from "@/lib/demo-data";
-import { DEMO_SESSION, useRecluStore } from "@/lib/store/reclu-store";
+import { useRecluStore } from "@/lib/store/reclu-store";
 import { toast } from "sonner";
 import { AlertCircle } from "lucide-react";
 

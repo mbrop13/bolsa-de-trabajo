@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { DEMO_SESSION, useRecluStore } from "@/lib/store/reclu-store";
+import { useRecluStore } from "@/lib/store/reclu-store";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { labelOf, SENIORITY, MODALITIES } from "@/lib/constants";

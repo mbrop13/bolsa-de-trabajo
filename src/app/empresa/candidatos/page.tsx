@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ContactCandidateButton } from "@/components/contact/contact-candidate-dialog";
-import { DEMO_SESSION, useRecluStore } from "@/lib/store/reclu-store";
+import { useRecluStore } from "@/lib/store/reclu-store";
 import { AlertCircle, Search } from "lucide-react";
 
 export default function EmpresaCandidatosPage() {
