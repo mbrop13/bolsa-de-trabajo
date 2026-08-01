@@ -13,7 +13,7 @@ const groups = [
     items: [
       {
         q: "¿Qué es Reclu?",
-        a: "Reclu es la bolsa de trabajo de ProgramBI. Conecta talento con empresas verificadas en Latinoamérica: perfiles profesionales, vacantes claras, postulaciones y chat con reclutadores.",
+        a: "Reclu es la bolsa de trabajo de ProgramBI. Conecta talento con empresas: perfiles profesionales, vacantes claras, postulaciones y chat con reclutadores.",
       },
       {
         q: "¿En qué se diferencia de otros portales?",

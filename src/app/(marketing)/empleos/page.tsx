@@ -3,7 +3,7 @@ import { EmpleosClient } from "./empleos-client";
 
 export const metadata = {
   title: "Empleos",
-  description: "Explora vacantes de empresas verificadas en Latinoamérica.",
+  description: "Explora vacantes y oportunidades de empleo en Reclu by ProgramBI.",
 };
 
 export default function EmpleosPage() {

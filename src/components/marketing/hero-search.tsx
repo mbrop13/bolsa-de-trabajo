@@ -43,7 +43,7 @@ export function HeroSearch() {
         <div className="relative flex items-center px-1 sm:min-w-[9.5rem]">
           <MapPin className="pointer-events-none absolute left-3 h-4 w-4 text-slate-400 sm:left-3" />
           <span className="flex h-10 items-center pl-9 text-sm text-slate-500 sm:h-11">
-            LATAM · Remoto
+            Todas · Remoto
           </span>
         </div>
         <Button

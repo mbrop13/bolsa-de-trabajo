@@ -44,8 +44,8 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.08]">
-              Encuentra tu próximo empleo en{" "}
-              <span className="text-gradient">Latinoamérica</span>
+              Encuentra mejores{" "}
+              <span className="text-gradient">oportunidades de empleo</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
@@ -196,8 +196,8 @@ export default function HomePage() {
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
                 Si buscas tu primer empleo, un salto de seniority o un rol
-                remoto en LATAM, Reclu te da un espacio profesional para
-                mostrarte y postular con claridad.
+                remoto, Reclu te da un espacio profesional para mostrarte y
+                postular con claridad.
               </p>
               <ul className="mt-8 space-y-3.5">
                 {[
@@ -252,7 +252,7 @@ export default function HomePage() {
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       <Badge variant="outline">Buscando activamente</Badge>
                       <Badge variant="secondary">Remoto</Badge>
-                      <Badge variant="secondary">LATAM</Badge>
+                      <Badge variant="secondary">Híbrido</Badge>
                     </div>
                   </div>
                   <div className="mt-6 space-y-3 border-t border-border/80 pt-5">
@@ -496,7 +496,7 @@ export default function HomePage() {
               <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
                 ProgramBI forma profesionales listos para el mercado. Reclu es
                 el puente hacia el empleo: perfiles serios, procesos claros y
-                una red pensada para Latinoamérica.
+                una red pensada para conectar talento con empresas.
               </p>
               <Link href="/sobre-nosotros" className="mt-8 inline-block">
                 <Button size="lg" className="shadow-md shadow-primary/20">
@@ -516,8 +516,8 @@ export default function HomePage() {
                   d: "Vacantes con modalidad y datos a la vista. Menos fricción al postular.",
                 },
                 {
-                  t: "LATAM first",
-                  d: "Roles remotos, híbridos y presenciales pensados para la región.",
+                  t: "Modalidades flexibles",
+                  d: "Roles remotos, híbridos y presenciales según cada vacante.",
                 },
                 {
                   t: "Una sola red",
@@ -552,7 +552,7 @@ export default function HomePage() {
               {[
                 {
                   q: "¿Qué es exactamente Reclu?",
-                  a: "Es la bolsa de trabajo de ProgramBI: perfiles profesionales, vacantes, postulaciones y chat con reclutadores en Latinoamérica.",
+                  a: "Es la bolsa de trabajo de ProgramBI: perfiles profesionales, vacantes, postulaciones y chat con reclutadores.",
                 },
                 {
                   q: "¿Es gratis?",

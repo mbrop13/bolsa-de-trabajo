@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: "Sobre nosotros",
   description:
-    "Reclu es la bolsa de trabajo de ProgramBI. Conectamos formación y empleo en Latinoamérica.",
+    "Reclu es la bolsa de trabajo de ProgramBI. Conectamos formación y empleo.",
 };
 
 const values = [
@@ -45,7 +45,7 @@ export default function SobreNosotrosPage() {
     <>
       <PageHero
         eyebrow="ProgramBI × Reclu"
-        title="Conectamos formación y empleo en LATAM"
+        title="Conectamos formación y empleo"
         description="ProgramBI forma profesionales listos para el mercado. Reclu es la plataforma donde ese talento y las empresas se encuentran con seriedad."
       >
         <div className="flex flex-wrap gap-3">
@@ -79,9 +79,8 @@ export default function SobreNosotrosPage() {
               </p>
               <p>
                 <strong className="text-slate-900">Reclu</strong> es nuestra
-                respuesta: una bolsa de trabajo pensada para Latinoamérica, con
-                perfiles profesionales, empresas verificadas y herramientas
-                reales de postulación y contacto.
+                respuesta: una bolsa de trabajo con perfiles profesionales,
+                procesos claros y herramientas reales de postulación y contacto.
               </p>
               <p>
                 No queremos ser “otro tablero de avisos”. Queremos ser el lugar
@@ -92,7 +91,7 @@ export default function SobreNosotrosPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { k: "Foco", v: "Empleo en LATAM" },
+              { k: "Foco", v: "Mejores oportunidades" },
               { k: "Candidatos", v: "Perfiles detallados" },
               { k: "Empresas", v: "Aprobación manual" },
               { k: "Proceso", v: "Postular + chat" },

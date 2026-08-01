@@ -15,9 +15,9 @@ const stats = [
   },
   {
     icon: Globe2,
-    value: "LATAM",
-    label: "Hecho para la región",
-    detail: "Remoto, híbrido y presencial",
+    value: "Flexible",
+    label: "Remoto, híbrido o presencial",
+    detail: "Según cada vacante",
   },
   {
     icon: Gift,

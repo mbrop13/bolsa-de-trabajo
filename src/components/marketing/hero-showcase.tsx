@@ -47,7 +47,7 @@ export function HeroShowcase() {
                     </Badge>
                   </div>
                   <p className="mt-0.5 text-sm text-muted-foreground">
-                    Nubix Labs · Remoto LATAM
+                    Nubix Labs · Remoto
                   </p>
                   <div className="mt-2.5 flex flex-wrap gap-1.5">
                     <Badge variant="secondary">Semi Senior</Badge>
@@ -137,7 +137,7 @@ export function HeroShowcase() {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-soft text-primary">
             <MapPin className="h-4 w-4" />
           </div>
-          <p className="text-xs font-semibold text-slate-700">Remoto LATAM</p>
+          <p className="text-xs font-semibold text-slate-700">Remoto</p>
         </div>
 
         <div className="absolute -right-3 bottom-4 z-10 hidden animate-float lg:flex lg:items-center lg:gap-2 lg:rounded-xl lg:border lg:border-slate-200/90 lg:bg-white lg:px-3 lg:py-2.5 lg:shadow-lg lg:shadow-slate-200/60 lg:ring-1 lg:ring-slate-900/[0.03]">

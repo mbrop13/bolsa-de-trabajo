@@ -18,7 +18,7 @@ export default function PreciosPage() {
       <PageHero
         eyebrow="Precios transparentes"
         title="Gratis en el lanzamiento. Valor desde el día uno."
-        description="Publicar vacantes, postular y chatear no tiene costo mientras abrimos la red de ProgramBI en LATAM."
+        description="Publicar vacantes, postular y chatear no tiene costo mientras abrimos la red de ProgramBI."
       />
 
       <section className="container-page py-16 sm:py-20">

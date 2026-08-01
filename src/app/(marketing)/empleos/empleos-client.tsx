@@ -129,7 +129,7 @@ export function EmpleosClient() {
             Bolsa de trabajo
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Empleos en Latinoamérica
+            Explora oportunidades de empleo
           </h1>
           <p className="mt-3 max-w-2xl text-base text-slate-600 sm:text-lg">
             {store.ready ? (

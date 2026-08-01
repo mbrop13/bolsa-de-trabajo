@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     template: "%s | Reclu",
   },
   description:
-    "Encuentra empleo en Latinoamérica. Perfiles profesionales, vacantes claras y chat con reclutadores. By ProgramBI.",
+    "Encuentra mejores oportunidades de empleo. Perfiles profesionales, vacantes claras y chat con reclutadores. By ProgramBI.",
   keywords: [
     "bolsa de trabajo",
-    "empleos LATAM",
-    "trabajo Latinoamérica",
+    "empleos",
+    "oportunidades de empleo",
     "ProgramBI",
     "Reclu",
   ],

@@ -20,7 +20,7 @@ export function CandidateOnboarding() {
     {
       icon: Sparkles,
       title: "Bienvenido a Reclu",
-      body: "Tu perfil profesional es tu carta de presentación ante empresas verificadas en LATAM.",
+      body: "Tu perfil profesional es tu carta de presentación ante empresas en Reclu.",
     },
     {
       icon: User,
