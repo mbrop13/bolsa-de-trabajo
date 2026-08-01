@@ -5,11 +5,12 @@ import type {
   Job,
   Profile,
 } from "@/types/database";
+import { DEMO_MODE as CONFIG_DEMO, usesLocalData } from "@/lib/config";
 
-export const DEMO_MODE =
-  !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-  process.env.NEXT_PUBLIC_SUPABASE_URL.includes("your-project") ||
-  process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+/** @deprecated Prefer usesLocalData() / showDevChrome() from @/lib/config */
+export const DEMO_MODE = CONFIG_DEMO;
+
+export { usesLocalData };
 
 const now = new Date().toISOString();
 const daysAgo = (n: number) =>

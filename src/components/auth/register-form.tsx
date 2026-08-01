@@ -13,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { DEMO_MODE } from "@/lib/demo-data";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
@@ -39,10 +38,12 @@ export function RegisterForm({
     e.preventDefault();
     setLoading(true);
     try {
-      if (!isSupabaseConfigured() || DEMO_MODE) {
-        toast.message("Modo demo", {
-          description: "Explora el panel con datos de ejemplo.",
-        });
+      if (!isSupabaseConfigured()) {
+        toast.success(
+          role === "company"
+            ? "Empresa registrada. Completa tu perfil."
+            : "Cuenta creada. Completa tu perfil profesional."
+        );
         router.push(demoHref);
         return;
       }
@@ -71,9 +72,9 @@ export function RegisterForm({
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
+    <Card className="border-border/80 shadow-lg shadow-slate-200/50">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl tracking-tight">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -103,7 +104,7 @@ export function RegisterForm({
             </div>
           )}
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">Email de trabajo</Label>
             <Input
               id="email"
               type="email"
@@ -125,13 +126,27 @@ export function RegisterForm({
               placeholder="Mínimo 8 caracteres"
             />
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Creando..." : "Crear cuenta"}
+          <Button type="submit" className="w-full" size="lg" disabled={loading}>
+            {loading ? "Creando cuenta..." : "Crear cuenta gratis"}
           </Button>
+          <p className="text-center text-[11px] text-muted-foreground leading-relaxed">
+            Al continuar aceptas los{" "}
+            <Link href="/terminos" className="underline hover:text-primary">
+              términos
+            </Link>{" "}
+            y la{" "}
+            <Link href="/privacidad" className="underline hover:text-primary">
+              política de privacidad
+            </Link>
+            .
+          </p>
         </form>
         <p className="mt-6 text-center text-sm text-muted-foreground">
           ¿Ya tienes cuenta?{" "}
-          <Link href="/auth/login" className="font-medium text-primary hover:underline">
+          <Link
+            href="/auth/login"
+            className="font-medium text-primary hover:underline"
+          >
             Inicia sesión
           </Link>
         </p>

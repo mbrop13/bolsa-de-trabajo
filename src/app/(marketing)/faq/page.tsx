@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "¿Hay chat en tiempo real?",
-    a: "Hay conversaciones multi-mensaje (chat de reclutamiento). En demo se guardan en el navegador; en producción se conectan a Supabase (y opcionalmente Realtime).",
+    a: "Sí. Hay conversaciones multi-mensaje entre empresas verificadas y candidatos desde el panel de Chat de cada cuenta.",
   },
   {
     q: "¿Por qué mi empresa no puede publicar?",

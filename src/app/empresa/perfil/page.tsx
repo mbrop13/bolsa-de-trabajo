@@ -123,7 +123,7 @@ export default function EmpresaPerfilPage() {
           <div className="space-y-2 sm:col-span-2">
             <Label>Logo</Label>
             <div className="rounded-xl border border-dashed border-border bg-slate-50 p-6 text-center text-sm text-muted-foreground">
-              Subir logo (PNG/JPG) · Supabase Storage en producción
+              Subir logo (PNG o JPG)
               <div className="mt-3">
                 <Button type="button" variant="outline" size="sm">
                   Subir imagen
@@ -134,7 +134,7 @@ export default function EmpresaPerfilPage() {
           <div className="sm:col-span-2">
             <Button
               type="button"
-              onClick={() => toast.success("Perfil de empresa guardado (demo)")}
+              onClick={() => toast.success("Perfil de empresa actualizado")}
             >
               Guardar perfil
             </Button>

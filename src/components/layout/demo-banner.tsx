@@ -1,26 +1,28 @@
 "use client";
 
-import { DEMO_MODE } from "@/lib/demo-data";
+import { showDevChrome } from "@/lib/config";
 import { useRecluStoreOptional } from "@/lib/store/reclu-store";
 
+/**
+ * Solo visible en desarrollo local.
+ * Nunca se muestra en producción (Vercel).
+ */
 export function DemoBanner() {
   const store = useRecluStoreOptional();
-  if (!DEMO_MODE) return null;
+  if (!showDevChrome()) return null;
+
   return (
-    <div className="bg-primary px-4 py-2 text-center text-xs font-medium text-white sm:text-sm">
-      <span className="hidden sm:inline">
-        Flujos activos: postular · publicar vacantes · contactar talento. Datos en
-        este navegador.{" "}
-      </span>
-      <a href="/app" className="underline underline-offset-2 hover:text-white/90">
+    <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs font-medium text-amber-900 sm:text-sm">
+      <span className="hidden sm:inline">Modo desarrollo · </span>
+      <a href="/app" className="underline underline-offset-2">
         Candidato
       </a>
       {" · "}
-      <a href="/empresa" className="underline underline-offset-2 hover:text-white/90">
+      <a href="/empresa" className="underline underline-offset-2">
         Empresa
       </a>
       {" · "}
-      <a href="/admin" className="underline underline-offset-2 hover:text-white/90">
+      <a href="/admin" className="underline underline-offset-2">
         Admin
       </a>
       {store && (
@@ -28,15 +30,15 @@ export function DemoBanner() {
           {" · "}
           <button
             type="button"
-            className="underline underline-offset-2 hover:text-white/90"
+            className="underline underline-offset-2"
             onClick={() => {
-              if (confirm("¿Restablecer datos demo de este navegador?")) {
+              if (confirm("¿Restablecer datos locales de este navegador?")) {
                 store.resetStore();
                 window.location.reload();
               }
             }}
           >
-            Reset datos
+            Reset
           </button>
         </>
       )}

@@ -24,7 +24,7 @@ export default function RecuperarPage() {
     setLoading(true);
     try {
       if (!isSupabaseConfigured()) {
-        toast.message("Configura Supabase para recuperar contraseña");
+        toast.message("La recuperación de contraseña estará disponible en breve");
         return;
       }
       const supabase = createClient();

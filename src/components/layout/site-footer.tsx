@@ -4,18 +4,18 @@ import { Logo } from "./logo";
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-slate-50">
-      <div className="container-page py-12">
+      <div className="container-page py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-1">
             <Logo showTagline />
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Bolsa de trabajo tech de ProgramBI. Conectamos talento de
-              programación con empresas que crecen en LATAM.
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              La bolsa de trabajo tech de ProgramBI. Conectamos talento de
+              programación y datos con empresas que crecen en Latinoamérica.
             </p>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-slate-900">Explorar</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            <h4 className="text-sm font-semibold text-slate-900">Producto</h4>
+            <ul className="mt-3 space-y-2.5 text-sm text-muted-foreground">
               <li>
                 <Link href="/empleos" className="hover:text-primary">
                   Empleos
@@ -33,21 +33,27 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link href="/faq" className="hover:text-primary">
-                  FAQ
+                  Centro de ayuda
                 </Link>
               </li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold text-slate-900">Cuentas</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            <ul className="mt-3 space-y-2.5 text-sm text-muted-foreground">
               <li>
-                <Link href="/auth/registro/candidato" className="hover:text-primary">
+                <Link
+                  href="/auth/registro/candidato"
+                  className="hover:text-primary"
+                >
                   Soy candidato
                 </Link>
               </li>
               <li>
-                <Link href="/auth/registro/empresa" className="hover:text-primary">
+                <Link
+                  href="/auth/registro/empresa"
+                  className="hover:text-primary"
+                >
                   Soy empresa
                 </Link>
               </li>
@@ -60,7 +66,7 @@ export function SiteFooter() {
           </div>
           <div>
             <h4 className="text-sm font-semibold text-slate-900">Legal</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            <ul className="mt-3 space-y-2.5 text-sm text-muted-foreground">
               <li>
                 <Link href="/privacidad" className="hover:text-primary">
                   Privacidad
@@ -79,9 +85,12 @@ export function SiteFooter() {
             </ul>
           </div>
         </div>
-        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Reclu by ProgramBI. Todos los derechos reservados.</p>
-          <p>Diseñado para talento tech en Latinoamérica.</p>
+        <div className="mt-12 flex flex-col gap-2 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} Reclu by ProgramBI. Todos los derechos
+            reservados.
+          </p>
+          <p>Hecho para el ecosistema tech de Latinoamérica.</p>
         </div>
       </div>
     </footer>

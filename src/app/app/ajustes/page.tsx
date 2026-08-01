@@ -24,7 +24,7 @@ export default function AjustesCandidatoPage() {
           </div>
           <Button
             type="button"
-            onClick={() => toast.success("Ajustes guardados (demo)")}
+            onClick={() => toast.success("Ajustes guardados")}
           >
             Guardar
           </Button>

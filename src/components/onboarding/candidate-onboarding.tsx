@@ -85,7 +85,7 @@ export function CandidateOnboarding() {
           className="text-xs text-muted-foreground hover:text-primary"
           onClick={() => store.completeOnboarding(KEY)}
         >
-          Saltar intro · {DEMO_SESSION.candidateId}
+          Saltar por ahora
         </button>
       </div>
     </Dialog>

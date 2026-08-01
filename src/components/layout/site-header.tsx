@@ -12,8 +12,7 @@ const nav = [
   { href: "/empleos", label: "Empleos" },
   { href: "/empresas", label: "Empresas" },
   { href: "/precios", label: "Precios" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/sobre-nosotros", label: "Nosotros" },
+  { href: "/faq", label: "Ayuda" },
 ];
 
 export function SiteHeader() {
@@ -31,16 +30,16 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-white/90 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
-        <div className="flex items-center gap-8">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-white/95 backdrop-blur-md">
+      <div className="container-page flex h-[4.25rem] items-center justify-between gap-4">
+        <div className="flex items-center gap-10">
           <Logo showTagline />
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-0.5 md:flex">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900"
+                className="rounded-lg px-3.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900"
               >
                 {item.label}
               </Link>
@@ -51,32 +50,34 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <form
             onSubmit={submitSearch}
-            className="hidden lg:block relative w-56"
+            className="relative hidden w-52 lg:block xl:w-64"
           >
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Buscar empleos..."
-              className="h-9 pl-9 text-sm"
+              className="h-9 border-slate-200 bg-slate-50/80 pl-9 text-sm focus-visible:bg-white"
               aria-label="Buscar empleos"
             />
           </form>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border lg:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-slate-600 lg:hidden"
             aria-label="Buscar"
             onClick={() => setSearchOpen((v) => !v)}
           >
             <Search className="h-4 w-4" />
           </button>
           <Link href="/auth/login" className="hidden sm:block">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="font-medium">
               Iniciar sesión
             </Button>
           </Link>
           <Link href="/auth/registro" className="hidden sm:block">
-            <Button size="sm">Crear cuenta</Button>
+            <Button size="sm" className="font-medium shadow-sm shadow-primary/20">
+              Crear cuenta
+            </Button>
           </Link>
           <button
             type="button"
@@ -107,7 +108,7 @@ export function SiteHeader() {
 
       {open && (
         <div className="border-t border-border bg-white md:hidden">
-          <nav className="container-page flex flex-col gap-1 py-3">
+          <nav className="container-page flex flex-col gap-0.5 py-3">
             {nav.map((item) => (
               <Link
                 key={item.href}

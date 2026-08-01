@@ -6,8 +6,14 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { DEMO_MODE } from "@/lib/demo-data";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { showDevChrome } from "@/lib/config";
 import { isSupabaseConfigured, createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
@@ -21,11 +27,14 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      if (!isSupabaseConfigured() || DEMO_MODE) {
-        toast.message("Modo demo", {
-          description: "Usa los accesos rápidos debajo o conecta Supabase.",
-        });
-        setLoading(false);
+      if (!isSupabaseConfigured()) {
+        // Sesión local: redirige según el email sin UI de "demo"
+        const e = email.toLowerCase();
+        if (e.includes("admin")) router.push("/admin");
+        else if (e.includes("empresa") || e.includes("company") || e.includes("hr"))
+          router.push("/empresa");
+        else router.push("/app");
+        toast.success("Sesión iniciada");
         return;
       }
       const supabase = createClient();
@@ -38,18 +47,20 @@ export default function LoginPage() {
       router.push("/app");
       router.refresh();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Error al iniciar sesión");
+      toast.error(
+        err instanceof Error ? err.message : "Error al iniciar sesión"
+      );
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Iniciar sesión</CardTitle>
+    <Card className="border-border/80 shadow-lg shadow-slate-200/50">
+      <CardHeader className="space-y-1 pb-4">
+        <CardTitle className="text-2xl tracking-tight">Iniciar sesión</CardTitle>
         <CardDescription>
-          Accede a tu cuenta de candidato, empresa o admin
+          Accede a tu cuenta de candidato o empresa en Reclu
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -71,7 +82,7 @@ export default function LoginPage() {
               <Label htmlFor="password">Contraseña</Label>
               <Link
                 href="/auth/recuperar"
-                className="text-xs text-primary hover:underline"
+                className="text-xs font-medium text-primary hover:underline"
               >
                 ¿Olvidaste tu contraseña?
               </Link>
@@ -81,37 +92,36 @@ export default function LoginPage() {
               type="password"
               autoComplete="current-password"
               required
+              minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
             />
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Entrando..." : "Entrar"}
+          <Button type="submit" className="w-full" size="lg" disabled={loading}>
+            {loading ? "Entrando..." : "Entrar a Reclu"}
           </Button>
         </form>
 
-        {(DEMO_MODE || !isSupabaseConfigured()) && (
-          <div className="mt-6 rounded-xl border border-dashed border-primary/30 bg-primary-soft/50 p-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-              Demo rápida
-            </p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Sin Supabase aún — explora los paneles con datos de ejemplo.
+        {showDevChrome() && (
+          <div className="mt-6 rounded-xl border border-dashed border-amber-300 bg-amber-50/80 p-4">
+            <p className="text-xs font-semibold text-amber-900">
+              Solo desarrollo
             </p>
             <div className="mt-3 grid gap-2">
               <Link href="/app">
                 <Button variant="outline" size="sm" className="w-full">
-                  Entrar como candidato
+                  Candidato
                 </Button>
               </Link>
               <Link href="/empresa">
                 <Button variant="outline" size="sm" className="w-full">
-                  Entrar como empresa
+                  Empresa
                 </Button>
               </Link>
               <Link href="/admin">
                 <Button variant="outline" size="sm" className="w-full">
-                  Entrar como admin
+                  Admin
                 </Button>
               </Link>
             </div>
@@ -120,8 +130,11 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           ¿No tienes cuenta?{" "}
-          <Link href="/auth/registro" className="font-medium text-primary hover:underline">
-            Regístrate
+          <Link
+            href="/auth/registro"
+            className="font-medium text-primary hover:underline"
+          >
+            Crear cuenta gratis
           </Link>
         </p>
       </CardContent>
