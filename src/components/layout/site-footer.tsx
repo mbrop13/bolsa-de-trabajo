@@ -1,0 +1,89 @@
+import Link from "next/link";
+import { Logo } from "./logo";
+
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-border bg-slate-50">
+      <div className="container-page py-12">
+        <div className="grid gap-10 md:grid-cols-4">
+          <div className="md:col-span-1">
+            <Logo showTagline />
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+              Bolsa de trabajo tech de ProgramBI. Conectamos talento de
+              programación con empresas que crecen en LATAM.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-slate-900">Explorar</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/empleos" className="hover:text-primary">
+                  Empleos
+                </Link>
+              </li>
+              <li>
+                <Link href="/empresas" className="hover:text-primary">
+                  Empresas
+                </Link>
+              </li>
+              <li>
+                <Link href="/precios" className="hover:text-primary">
+                  Precios
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-primary">
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-slate-900">Cuentas</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/auth/registro/candidato" className="hover:text-primary">
+                  Soy candidato
+                </Link>
+              </li>
+              <li>
+                <Link href="/auth/registro/empresa" className="hover:text-primary">
+                  Soy empresa
+                </Link>
+              </li>
+              <li>
+                <Link href="/auth/login" className="hover:text-primary">
+                  Iniciar sesión
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold text-slate-900">Legal</h4>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/privacidad" className="hover:text-primary">
+                  Privacidad
+                </Link>
+              </li>
+              <li>
+                <Link href="/terminos" className="hover:text-primary">
+                  Términos
+                </Link>
+              </li>
+              <li>
+                <Link href="/sobre-nosotros" className="hover:text-primary">
+                  Sobre nosotros
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Reclu by ProgramBI. Todos los derechos reservados.</p>
+          <p>Diseñado para talento tech en Latinoamérica.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
