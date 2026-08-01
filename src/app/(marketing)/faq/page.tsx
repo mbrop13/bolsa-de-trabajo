@@ -1,69 +1,111 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { PageHero } from "@/components/marketing/page-hero";
+import { MarketingCta } from "@/components/marketing/marketing-cta";
+import { Button } from "@/components/ui/button";
 
-export const metadata = { title: "Preguntas frecuentes" };
+export const metadata = {
+  title: "Centro de ayuda",
+  description: "Preguntas frecuentes sobre Reclu, la bolsa de trabajo de ProgramBI.",
+};
 
-const faqs = [
+const groups = [
   {
-    q: "¿Reclu es gratis?",
-    a: "Sí. En el lanzamiento candidatos y empresas usan la plataforma sin costo. Más adelante podrá haber planes premium opcionales.",
+    title: "Sobre la plataforma",
+    items: [
+      {
+        q: "¿Qué es Reclu?",
+        a: "Reclu es la bolsa de trabajo tech de ProgramBI. Conecta talento de programación y datos con empresas verificadas en Latinoamérica: perfiles profesionales, vacantes claras, postulaciones y chat con reclutadores.",
+      },
+      {
+        q: "¿En qué se diferencia de otros portales?",
+        a: "Enfoque 100% tech, verificación de empresas, perfiles detallados (no solo un CV), transparencia de modalidad/salario y chat integrado. Además, integra la comunidad ProgramBI.",
+      },
+      {
+        q: "¿Es gratis?",
+        a: "Sí. En el lanzamiento, candidatos y empresas pueden usar la plataforma sin costo para postular y publicar.",
+      },
+    ],
   },
   {
-    q: "¿Cómo contactan las empresas a los candidatos?",
-    a: "Las empresas aprobadas pueden iniciar un chat profesional desde el perfil del talento o desde las postulaciones. El candidato responde en su panel de Chat.",
+    title: "Candidatos",
+    items: [
+      {
+        q: "¿Cómo creo un buen perfil?",
+        a: "Completa headline, resumen, experiencia o proyectos, skills y educación. Si eres de ProgramBI, activa el badge. Un perfil más completo recibe más atención de reclutadores.",
+      },
+      {
+        q: "¿Puedo postular a varias vacantes?",
+        a: "Sí. Una postulación activa por vacante. Puedes ver el estado y retirar una postulación desde tu panel.",
+      },
+      {
+        q: "¿Cómo funciona el chat?",
+        a: "Las empresas verificadas pueden iniciar una conversación contigo. Respondes desde Chat en tu panel, con mensajes múltiples (no solo un correo suelto).",
+      },
+    ],
   },
   {
-    q: "¿Hay chat en tiempo real?",
-    a: "Sí. Hay conversaciones multi-mensaje entre empresas verificadas y candidatos desde el panel de Chat de cada cuenta.",
-  },
-  {
-    q: "¿Por qué mi empresa no puede publicar?",
-    a: "Las empresas nuevas quedan en estado pendiente hasta que el equipo de Reclu/ProgramBI las apruebe. Así mantenemos calidad y confianza.",
-  },
-  {
-    q: "¿Qué es el badge ProgramBI?",
-    a: "Identifica alumnos o egresados de ProgramBI. Las empresas pueden filtrar talento con esa formación.",
-  },
-  {
-    q: "¿Puedo postular a varias vacantes?",
-    a: "Sí. Una postulación activa por vacante. Puedes retirar una postulación desde tu panel si ya no te interesa.",
+    title: "Empresas",
+    items: [
+      {
+        q: "¿Por qué mi empresa está pendiente?",
+        a: "Revisamos cada registro para mantener la calidad de la red. Cuando seas aprobada, podrás publicar vacantes y contactar talento.",
+      },
+      {
+        q: "¿Qué veo en el panel de empresa?",
+        a: "Vacantes, inbox de postulaciones con pipeline de estados, directorio de talento público y chat con candidatos.",
+      },
+      {
+        q: "¿Puedo destacar vacantes?",
+        a: "Hoy el lanzamiento es gratuito. Más adelante podremos ofrecer opciones premium; te avisaremos en la plataforma.",
+      },
+    ],
   },
 ];
 
 export default function FaqPage() {
   return (
-    <div className="container-page max-w-3xl py-16">
-      <Badge className="mb-4">Ayuda</Badge>
-      <h1 className="text-3xl font-bold tracking-tight">
-        Preguntas frecuentes
-      </h1>
-      <p className="mt-2 text-muted-foreground">
-        Todo lo esencial sobre Reclu by ProgramBI
-      </p>
-      <div className="mt-10 space-y-4">
-        {faqs.map((f) => (
-          <details
-            key={f.q}
-            className="group rounded-2xl border border-border bg-white p-5 shadow-sm open:border-primary/30"
-          >
-            <summary className="cursor-pointer list-none font-semibold text-slate-900 marker:content-none">
-              {f.q}
-            </summary>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">{f.a}</p>
-          </details>
-        ))}
-      </div>
-      <p className="mt-10 text-sm text-muted-foreground">
-        ¿Más dudas?{" "}
-        <Link href="/sobre-nosotros" className="text-primary hover:underline">
-          Conoce ProgramBI
-        </Link>{" "}
-        o crea tu cuenta en{" "}
-        <Link href="/auth/registro" className="text-primary hover:underline">
-          Reclu
+    <>
+      <PageHero
+        eyebrow="Centro de ayuda"
+        title="Preguntas frecuentes"
+        description="Todo lo esencial para entender Reclu y sacar el máximo provecho como candidato o empresa."
+      >
+        <Link href="/auth/registro">
+          <Button size="lg">Crear cuenta</Button>
         </Link>
-        .
-      </p>
-    </div>
+      </PageHero>
+
+      <section className="container-page py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl space-y-12">
+          {groups.map((g) => (
+            <div key={g.title}>
+              <h2 className="text-lg font-bold text-slate-900">{g.title}</h2>
+              <div className="mt-4 space-y-3">
+                {g.items.map((f) => (
+                  <details
+                    key={f.q}
+                    className="group rounded-2xl border border-border bg-white px-5 py-4 shadow-sm open:border-primary/25 open:shadow-md"
+                  >
+                    <summary className="cursor-pointer list-none font-semibold text-slate-900">
+                      <span className="flex items-center justify-between gap-3">
+                        {f.q}
+                        <span className="text-lg text-primary transition group-open:rotate-45">
+                          +
+                        </span>
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                      {f.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <MarketingCta />
+    </>
   );
 }

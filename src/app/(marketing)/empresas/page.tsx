@@ -2,12 +2,15 @@ import Link from "next/link";
 import { demoCompanies, demoJobs } from "@/lib/demo-data";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Sparkles } from "lucide-react";
+import { PageHero } from "@/components/marketing/page-hero";
+import { MapPin, Sparkles, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "Empresas",
-  description: "Empresas tech verificadas que contratan en Reclu.",
+  description:
+    "Directorio de empresas tech verificadas que contratan en Reclu by ProgramBI.",
 };
 
 export default function EmpresasPage() {
@@ -21,23 +24,28 @@ export default function EmpresasPage() {
     }));
 
   return (
-    <div className="bg-surface min-h-[70vh]">
-      <div className="border-b border-border bg-white">
-        <div className="container-page py-10">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-            Empresas
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            Organizaciones verificadas por el equipo de Reclu / ProgramBI
-          </p>
-        </div>
-      </div>
+    <div className="min-h-[70vh] bg-surface">
+      <PageHero
+        eyebrow="Directorio"
+        title="Empresas tech verificadas"
+        description="Organizaciones revisadas por el equipo de Reclu / ProgramBI. Explora su cultura, stack y vacantes abiertas."
+      >
+        <Link href="/auth/registro/empresa">
+          <Button size="lg">
+            Registrar mi empresa
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </Link>
+      </PageHero>
 
-      <div className="container-page py-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="container-page py-12">
+        <p className="mb-6 text-sm text-muted-foreground">
+          {companies.length} empresas en la red
+        </p>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {companies.map((company) => (
             <Link key={company.id} href={`/empresas/${company.slug}`}>
-              <Card className="h-full transition-all hover:border-primary/30 hover:shadow-md">
+              <Card className="h-full transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <Avatar name={company.name} size="lg" />
@@ -55,7 +63,7 @@ export default function EmpresasPage() {
                       </p>
                     </div>
                   </div>
-                  <p className="mt-4 text-sm text-slate-600 line-clamp-2">
+                  <p className="mt-4 text-sm leading-relaxed text-slate-600 line-clamp-2">
                     {company.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
