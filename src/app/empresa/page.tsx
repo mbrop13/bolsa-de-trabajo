@@ -16,15 +16,16 @@ import {
 
 export default function EmpresaDashboardPage() {
   const store = useRecluStore();
-  const company = store.getCompany(DEMO_SESSION.companyId);
-  const jobs = store.getCompanyJobs(DEMO_SESSION.companyId);
+  const companyId = store.getActiveCompanyId();
+  const company = store.getCompany(companyId);
+  const jobs = store.getCompanyJobs(companyId);
   const published = jobs.filter((j) => j.status === "published");
-  const apps = store.getApplicationsForCompany(DEMO_SESSION.companyId);
+  const apps = store.getApplicationsForCompany(companyId);
   const newApps = apps.filter((a) => a.status === "submitted");
   const unreadChat = store.getUnreadCount({
-    companyId: DEMO_SESSION.companyId,
+    companyId,
   });
-  const threads = store.getThreadsForCompany(DEMO_SESSION.companyId);
+  const threads = store.getThreadsForCompany(companyId);
 
   if (!store.ready || !company) {
     return <p className="text-muted-foreground">Cargando…</p>;
@@ -56,7 +57,11 @@ export default function EmpresaDashboardPage() {
                 company.status === "approved" ? "success" : "warning"
               }
             >
-              {company.status === "approved" ? "Aprobada" : company.status}
+              {company.status === "approved"
+                ? "Aprobada"
+                : company.status === "pending"
+                  ? "Pendiente de aprobación"
+                  : company.status}
             </Badge>
           </div>
           <Link href="/empresa/vacantes/nueva">

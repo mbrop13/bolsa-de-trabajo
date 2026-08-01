@@ -64,6 +64,8 @@ export interface RecluState {
   threads: ChatThread[];
   messages: ChatMessage[];
   onboardingDone: Record<string, boolean>;
+  /** Empresa de la sesión actual (tras registro local) */
+  activeCompanyId: string | null;
   version: number;
 }
 
@@ -128,6 +130,7 @@ function createSeedState(): RecluState {
     applications,
     savedJobs: [],
     onboardingDone: {},
+    activeCompanyId: null,
     contacts: [
       {
         id: "msg-seed-1",
@@ -274,6 +277,8 @@ function loadState(): RecluState {
         jobs
       ),
       messages: parsed.messages?.length ? parsed.messages : seed.messages,
+      activeCompanyId:
+        parsed.activeCompanyId ?? seed.activeCompanyId ?? null,
     };
   } catch {
     return createSeedState();
@@ -346,6 +351,18 @@ interface RecluStoreApi {
     notes?: string
   ) => void;
   getCompany: (id: string) => Company | undefined;
+  getActiveCompanyId: () => string;
+  registerCompany: (input: {
+    name: string;
+    contact_name: string;
+    email: string;
+    industry?: string | null;
+    company_size?: string | null;
+    website?: string | null;
+    headquarters?: string | null;
+    description?: string | null;
+    contact_email?: string | null;
+  }) => { ok: true; company: Company } | { ok: false; error: string };
   /** Contacts */
   contactCandidate: (input: {
     company_id: string;
@@ -880,6 +897,64 @@ export function RecluStoreProvider({ children }: { children: React.ReactNode }) 
       },
 
       getCompany: (id) => state.companies.find((c) => c.id === id),
+
+      getActiveCompanyId: () =>
+        state.activeCompanyId || DEMO_SESSION.companyId,
+
+      registerCompany: (input) => {
+        const name = input.name?.trim();
+        if (!name) {
+          return { ok: false as const, error: "El nombre de la empresa es obligatorio" };
+        }
+        const now = new Date().toISOString();
+        const ownerId = uid("u-co");
+        const id = uid("co");
+        let baseSlug = slugify(name) || "empresa";
+        const existingSlugs = new Set(state.companies.map((c) => c.slug));
+        let slug = baseSlug;
+        let n = 2;
+        while (existingSlugs.has(slug)) {
+          slug = `${baseSlug}-${n++}`;
+        }
+        const company: Company = {
+          id,
+          owner_id: ownerId,
+          name,
+          legal_name: name,
+          slug,
+          tagline: null,
+          description: input.description?.trim() || null,
+          logo_url: null,
+          cover_url: null,
+          industry: input.industry?.trim() || null,
+          company_size: input.company_size || null,
+          founded_year: null,
+          headquarters: input.headquarters?.trim() || null,
+          countries: null,
+          website: input.website?.trim() || null,
+          linkedin_url: null,
+          tech_stack: null,
+          benefits: null,
+          contact_email:
+            input.contact_email?.trim() || input.email?.trim() || null,
+          status: "pending",
+          rejection_reason: null,
+          admin_notes: input.contact_name
+            ? `Contacto: ${input.contact_name}`
+            : null,
+          is_featured: false,
+          reviewed_at: null,
+          reviewed_by: null,
+          created_at: now,
+          updated_at: now,
+        };
+        commit((prev) => ({
+          ...prev,
+          companies: [company, ...prev.companies],
+          activeCompanyId: id,
+        }));
+        return { ok: true as const, company };
+      },
 
       contactCandidate: (input) => {
         const parsed = contactSchema.safeParse(input);

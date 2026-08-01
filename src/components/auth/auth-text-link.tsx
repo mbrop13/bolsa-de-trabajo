@@ -24,7 +24,7 @@ export function AuthTextLink({
     <button
       type="button"
       onClick={() => openAuth({ mode, role })}
-      className={cn("hover:text-primary", className)}
+      className={cn("text-left hover:text-primary", className)}
     >
       {children}
     </button>

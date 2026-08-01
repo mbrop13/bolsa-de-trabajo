@@ -21,7 +21,8 @@ import { AlertCircle } from "lucide-react";
 export default function NuevaVacantePage() {
   const router = useRouter();
   const store = useRecluStore();
-  const company = store.getCompany(DEMO_SESSION.companyId);
+  const companyId = store.getActiveCompanyId();
+  const company = store.getCompany(companyId);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     title: "",
@@ -46,7 +47,7 @@ export default function NuevaVacantePage() {
 
   function buildInput(status: "draft" | "published") {
     return {
-      company_id: DEMO_SESSION.companyId,
+      company_id: companyId,
       category_id: form.category_id,
       title: form.title,
       description: form.description,

@@ -23,7 +23,7 @@ export function ChatInbox({
   const store = useRecluStore();
   const threads =
     role === "company"
-      ? store.getThreadsForCompany(DEMO_SESSION.companyId)
+      ? store.getThreadsForCompany(store.getActiveCompanyId())
       : store.getThreadsForCandidate(DEMO_SESSION.candidateId);
 
   const [activeId, setActiveId] = useState<string | null>(

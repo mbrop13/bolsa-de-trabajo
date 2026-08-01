@@ -12,7 +12,7 @@ import { AlertCircle, Search } from "lucide-react";
 
 export default function EmpresaCandidatosPage() {
   const store = useRecluStore();
-  const company = store.getCompany(DEMO_SESSION.companyId);
+  const company = store.getCompany(store.getActiveCompanyId());
   const [q, setQ] = useState("");
   const [programbiOnly, setProgrambiOnly] = useState(false);
 

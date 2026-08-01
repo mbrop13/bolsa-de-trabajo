@@ -11,7 +11,10 @@ import { toast } from "sonner";
 
 export default function VacantesListPage() {
   const store = useRecluStore();
-  const jobs = store.getCompanyJobs(DEMO_SESSION.companyId);
+  const companyId = store.getActiveCompanyId();
+  const company = store.getCompany(companyId);
+  const jobs = store.getCompanyJobs(companyId);
+  const canPublish = company?.status === "approved";
 
   if (!store.ready) {
     return <p className="text-muted-foreground">Cargando…</p>;
@@ -23,8 +26,20 @@ export default function VacantesListPage() {
         <p className="text-sm text-muted-foreground">
           {jobs.length} vacante(s) · Publicadas aparecen en /empleos
         </p>
-        <Link href="/empresa/vacantes/nueva">
-          <Button size="sm">
+        <Link href={canPublish ? "/empresa/vacantes/nueva" : "#"}>
+          <Button
+            size="sm"
+            disabled={!canPublish}
+            onClick={(e) => {
+              if (!canPublish) {
+                e.preventDefault();
+                toast.message("Cuenta pendiente de aprobación", {
+                  description:
+                    "Cuando un admin apruebe tu empresa podrás publicar vacantes.",
+                });
+              }
+            }}
+          >
             <Plus className="h-4 w-4" />
             Nueva
           </Button>

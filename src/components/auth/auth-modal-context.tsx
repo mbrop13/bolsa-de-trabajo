@@ -9,22 +9,22 @@ import {
   type ReactNode,
 } from "react";
 
-export type AuthMode = "login" | "register";
+/** login | register (candidato) | company (registro empresa extendido) */
+export type AuthMode = "login" | "register" | "company";
 export type AuthRole = "candidate" | "company";
 
 export type OpenAuthOptions = {
   mode?: AuthMode;
+  /** Atajo: role company abre el formulario de empresa */
   role?: AuthRole;
 };
 
 type AuthModalContextValue = {
   open: boolean;
   mode: AuthMode;
-  role: AuthRole;
   openAuth: (options?: OpenAuthOptions) => void;
   closeAuth: () => void;
   setMode: (mode: AuthMode) => void;
-  setRole: (role: AuthRole) => void;
 };
 
 const AuthModalContext = createContext<AuthModalContextValue | null>(null);
@@ -36,13 +36,21 @@ export function AuthModalProviderInner({
 }) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<AuthMode>("login");
-  const [role, setRole] = useState<AuthRole>("candidate");
 
   const openAuth = useCallback((options?: OpenAuthOptions) => {
-    if (options?.mode) setMode(options.mode);
-    if (options?.role) setRole(options.role);
-    if (options?.mode === "register" && !options.role) {
-      setRole("candidate");
+    if (options?.role === "company") {
+      setMode("company");
+    } else if (options?.mode === "register" && options?.role === "candidate") {
+      setMode("register");
+    } else if (options?.mode) {
+      // Map legacy mode+role
+      if (options.mode === "register" && !options.role) {
+        setMode("register");
+      } else {
+        setMode(options.mode);
+      }
+    } else {
+      setMode("login");
     }
     setOpen(true);
   }, []);
@@ -53,13 +61,11 @@ export function AuthModalProviderInner({
     () => ({
       open,
       mode,
-      role,
       openAuth,
       closeAuth,
       setMode,
-      setRole,
     }),
-    [open, mode, role, openAuth, closeAuth]
+    [open, mode, openAuth, closeAuth]
   );
 
   return (

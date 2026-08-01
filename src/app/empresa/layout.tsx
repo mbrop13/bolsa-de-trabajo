@@ -20,13 +20,16 @@ export default function EmpresaLayout({
 }) {
   const pathname = usePathname();
   const store = useRecluStore();
+  const companyId = store.ready
+    ? store.getActiveCompanyId()
+    : DEMO_SESSION.companyId;
   const newApps = store.ready
     ? store
-        .getApplicationsForCompany(DEMO_SESSION.companyId)
+        .getApplicationsForCompany(companyId)
         .filter((a) => a.status === "submitted").length
     : 0;
   const unread = store.ready
-    ? store.getUnreadCount({ companyId: DEMO_SESSION.companyId })
+    ? store.getUnreadCount({ companyId })
     : 0;
 
   const nav = [

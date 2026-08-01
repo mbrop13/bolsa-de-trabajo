@@ -24,7 +24,7 @@ export function ContactCandidateDialog({
   defaultJobId?: string | null;
 }) {
   const store = useRecluStore();
-  const companyId = DEMO_SESSION.companyId;
+  const companyId = store.getActiveCompanyId();
   const company = store.getCompany(companyId);
   const jobs = store
     .getCompanyJobs(companyId)

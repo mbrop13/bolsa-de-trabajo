@@ -64,7 +64,7 @@ export function MarketingCta({
 
           <button
             type="button"
-            onClick={() => openAuth({ mode: "register", role: "company" })}
+            onClick={() => openAuth({ mode: "company", role: "company" })}
             className="group rounded-2xl border border-white/10 bg-white/[0.06] p-6 text-left backdrop-blur transition hover:border-primary/40 hover:bg-white/[0.1]"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/30">
