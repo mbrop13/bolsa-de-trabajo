@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AuthButton } from "@/components/auth/auth-button";
 import { FeaturedJobs } from "@/components/jobs/featured-jobs";
 import { HeroShowcase } from "@/components/marketing/hero-showcase";
 import { HeroSearch } from "@/components/marketing/hero-search";
@@ -58,25 +59,25 @@ export default function HomePage() {
             </div>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href="/auth/registro/candidato">
-                <Button
-                  size="lg"
-                  className="h-11 w-full px-6 shadow-md shadow-primary/20 sm:w-auto"
-                >
-                  Crear perfil gratis
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/auth/registro/empresa">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-11 w-full border-slate-200 bg-white/80 px-6 sm:w-auto"
-                >
-                  <Building2 className="h-4 w-4" />
-                  Soy empresa
-                </Button>
-              </Link>
+              <AuthButton
+                mode="register"
+                role="candidate"
+                size="lg"
+                className="h-11 w-full px-6 shadow-md shadow-primary/20 sm:w-auto"
+              >
+                Crear perfil gratis
+                <ArrowRight className="h-4 w-4" />
+              </AuthButton>
+              <AuthButton
+                mode="register"
+                role="company"
+                size="lg"
+                variant="outline"
+                className="h-11 w-full border-slate-200 bg-white/80 px-6 sm:w-auto"
+              >
+                <Building2 className="h-4 w-4" />
+                Soy empresa
+              </AuthButton>
             </div>
 
             <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2.5 text-sm text-slate-600">
@@ -214,11 +215,14 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link href="/auth/registro/candidato">
-                  <Button size="lg" className="shadow-md shadow-primary/20">
-                    Crear mi perfil gratis
-                  </Button>
-                </Link>
+                <AuthButton
+                  mode="register"
+                  role="candidate"
+                  size="lg"
+                  className="shadow-md shadow-primary/20"
+                >
+                  Crear mi perfil gratis
+                </AuthButton>
                 <Link href="/empleos">
                   <Button size="lg" variant="outline">
                     Explorar vacantes
@@ -400,11 +404,14 @@ export default function HomePage() {
                 ))}
               </ul>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link href="/auth/registro/empresa">
-                  <Button size="lg" className="shadow-md shadow-primary/20">
-                    Registrar mi empresa
-                  </Button>
-                </Link>
+                <AuthButton
+                  mode="register"
+                  role="company"
+                  size="lg"
+                  className="shadow-md shadow-primary/20"
+                >
+                  Registrar mi empresa
+                </AuthButton>
                 <Link href="/precios">
                   <Button size="lg" variant="outline">
                     Ver precios

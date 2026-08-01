@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
+import { AuthTextLink } from "@/components/auth/auth-text-link";
 
 export function SiteFooter() {
   return (
@@ -42,25 +43,17 @@ export function SiteFooter() {
             <h4 className="text-sm font-semibold text-slate-900">Cuentas</h4>
             <ul className="mt-3 space-y-2.5 text-sm text-muted-foreground">
               <li>
-                <Link
-                  href="/auth/registro/candidato"
-                  className="hover:text-primary"
-                >
+                <AuthTextLink mode="register" role="candidate">
                   Soy candidato
-                </Link>
+                </AuthTextLink>
               </li>
               <li>
-                <Link
-                  href="/auth/registro/empresa"
-                  className="hover:text-primary"
-                >
+                <AuthTextLink mode="register" role="company">
                   Soy empresa
-                </Link>
+                </AuthTextLink>
               </li>
               <li>
-                <Link href="/auth/login" className="hover:text-primary">
-                  Iniciar sesión
-                </Link>
+                <AuthTextLink mode="login">Iniciar sesión</AuthTextLink>
               </li>
             </ul>
           </div>

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAuthModal } from "@/components/auth/auth-modal-provider";
 import { ArrowRight, Building2, UserRound } from "lucide-react";
 
 export function MarketingCta({
@@ -9,9 +12,10 @@ export function MarketingCta({
   title?: string;
   description?: string;
 }) {
+  const { openAuth } = useAuthModal();
+
   return (
     <section className="relative overflow-hidden bg-slate-950 py-20 sm:py-24">
-      {/* Background layers */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(24,144,255,0.28),_transparent_55%)]" />
       <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-16 top-1/3 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
@@ -40,8 +44,9 @@ export function MarketingCta({
         </div>
 
         <div className="mx-auto mt-10 grid max-w-2xl gap-4 sm:grid-cols-2">
-          <Link
-            href="/auth/registro/candidato"
+          <button
+            type="button"
+            onClick={() => openAuth({ mode: "register", role: "candidate" })}
             className="group rounded-2xl border border-white/10 bg-white/[0.06] p-6 text-left backdrop-blur transition hover:border-primary/40 hover:bg-white/[0.1]"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-slate-900 shadow-lg">
@@ -55,10 +60,11 @@ export function MarketingCta({
               Empezar gratis
               <ArrowRight className="h-4 w-4" />
             </span>
-          </Link>
+          </button>
 
-          <Link
-            href="/auth/registro/empresa"
+          <button
+            type="button"
+            onClick={() => openAuth({ mode: "register", role: "company" })}
             className="group rounded-2xl border border-white/10 bg-white/[0.06] p-6 text-left backdrop-blur transition hover:border-primary/40 hover:bg-white/[0.1]"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/30">
@@ -72,7 +78,7 @@ export function MarketingCta({
               Registrar empresa
               <ArrowRight className="h-4 w-4" />
             </span>
-          </Link>
+          </button>
         </div>
 
         <div className="mt-8 flex justify-center">

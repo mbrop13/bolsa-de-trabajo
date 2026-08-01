@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { AuthButton } from "@/components/auth/auth-button";
 import { PageHero } from "@/components/marketing/page-hero";
 import { MarketingCta } from "@/components/marketing/marketing-cta";
 import {
@@ -48,9 +49,9 @@ export default function SobreNosotrosPage() {
         description="ProgramBI forma profesionales listos para el mercado. Reclu es la plataforma donde ese talento y las empresas se encuentran con seriedad."
       >
         <div className="flex flex-wrap gap-3">
-          <Link href="/auth/registro">
-            <Button size="lg">Unirme a Reclu</Button>
-          </Link>
+          <AuthButton mode="register" size="lg">
+            Unirme a Reclu
+          </AuthButton>
           <Link href="/empleos">
             <Button size="lg" variant="outline">
               Ver empleos

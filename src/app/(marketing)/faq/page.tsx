@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { PageHero } from "@/components/marketing/page-hero";
 import { MarketingCta } from "@/components/marketing/marketing-cta";
-import { Button } from "@/components/ui/button";
+import { AuthButton } from "@/components/auth/auth-button";
 
 export const metadata = {
   title: "Centro de ayuda",
@@ -70,9 +69,9 @@ export default function FaqPage() {
         title="Preguntas frecuentes"
         description="Todo lo esencial para entender Reclu y sacar el máximo provecho como candidato o empresa."
       >
-        <Link href="/auth/registro">
-          <Button size="lg">Crear cuenta</Button>
-        </Link>
+        <AuthButton mode="register" size="lg">
+          Crear cuenta
+        </AuthButton>
       </PageHero>
 
       <section className="container-page py-16 sm:py-20">

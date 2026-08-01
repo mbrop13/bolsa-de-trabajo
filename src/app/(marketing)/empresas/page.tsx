@@ -4,6 +4,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { AuthButton } from "@/components/auth/auth-button";
 import { PageHero } from "@/components/marketing/page-hero";
 import { MapPin, Sparkles, ArrowRight } from "lucide-react";
 
@@ -27,15 +28,13 @@ export default function EmpresasPage() {
     <div className="min-h-[70vh] bg-surface">
       <PageHero
         eyebrow="Directorio"
-        title="Empresas verificadas"
-        description="Organizaciones revisadas por el equipo de Reclu / ProgramBI. Explora su cultura y vacantes abiertas."
+        title="Empresas en Reclu"
+        description="Explora organizaciones que publican vacantes y su cultura de trabajo."
       >
-        <Link href="/auth/registro/empresa">
-          <Button size="lg">
-            Registrar mi empresa
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </Link>
+        <AuthButton mode="register" role="company" size="lg">
+          Registrar mi empresa
+          <ArrowRight className="h-4 w-4" />
+        </AuthButton>
       </PageHero>
 
       <div className="container-page py-12">

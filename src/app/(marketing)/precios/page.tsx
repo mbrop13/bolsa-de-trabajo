@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AuthButton } from "@/components/auth/auth-button";
 import { PageHero } from "@/components/marketing/page-hero";
 import { MarketingCta } from "@/components/marketing/marketing-cta";
 import { CheckCircle2, Sparkles, Building2, UserRound } from "lucide-react";
@@ -54,11 +55,14 @@ export default function PreciosPage() {
                 </li>
               ))}
             </ul>
-            <Link href="/auth/registro/candidato" className="mt-10 block">
-              <Button size="lg" className="w-full">
-                Crear perfil gratis
-              </Button>
-            </Link>
+            <AuthButton
+              mode="register"
+              role="candidate"
+              size="lg"
+              className="mt-10 w-full"
+            >
+              Crear perfil gratis
+            </AuthButton>
           </div>
 
           {/* Empresas */}
@@ -98,11 +102,14 @@ export default function PreciosPage() {
                 </li>
               ))}
             </ul>
-            <Link href="/auth/registro/empresa" className="mt-10 block">
-              <Button size="lg" className="w-full">
-                Registrar empresa
-              </Button>
-            </Link>
+            <AuthButton
+              mode="register"
+              role="company"
+              size="lg"
+              className="mt-10 w-full"
+            >
+              Registrar empresa
+            </AuthButton>
           </div>
         </div>
 

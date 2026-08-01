@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AuthButton } from "@/components/auth/auth-button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Menu, Search, X } from "lucide-react";
 
@@ -178,24 +179,22 @@ export function SiteHeader() {
 
             <div className="mx-0.5 hidden h-5 w-px bg-slate-200 sm:block" />
 
-            <Link href="/auth/login" className="hidden sm:block">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="rounded-full font-medium text-slate-700"
-              >
-                Iniciar sesión
-              </Button>
-            </Link>
-            <Link href="/auth/registro" className="hidden sm:block">
-              <Button
-                size="sm"
-                className="rounded-full font-medium shadow-sm shadow-primary/20"
-              >
-                Crear cuenta
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Button>
-            </Link>
+            <AuthButton
+              mode="login"
+              variant="ghost"
+              size="sm"
+              className="hidden rounded-full font-medium text-slate-700 sm:inline-flex"
+            >
+              Iniciar sesión
+            </AuthButton>
+            <AuthButton
+              mode="register"
+              size="sm"
+              className="hidden rounded-full font-medium shadow-sm shadow-primary/20 sm:inline-flex"
+            >
+              Crear cuenta
+              <ArrowRight className="h-3.5 w-3.5" />
+            </AuthButton>
 
             <button
               type="button"
@@ -284,17 +283,22 @@ export function SiteHeader() {
             );
           })}
           <div className="mt-2 flex flex-col gap-2 border-t border-border/80 pt-4 sm:hidden">
-            <Link href="/auth/login" onClick={closeMenus}>
-              <Button variant="outline" className="w-full rounded-xl">
-                Iniciar sesión
-              </Button>
-            </Link>
-            <Link href="/auth/registro" onClick={closeMenus}>
-              <Button className="w-full rounded-xl shadow-sm shadow-primary/20">
-                Crear cuenta
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
+            <AuthButton
+              mode="login"
+              variant="outline"
+              className="w-full rounded-xl"
+              onClick={closeMenus}
+            >
+              Iniciar sesión
+            </AuthButton>
+            <AuthButton
+              mode="register"
+              className="w-full rounded-xl shadow-sm shadow-primary/20"
+              onClick={closeMenus}
+            >
+              Crear cuenta
+              <ArrowRight className="h-4 w-4" />
+            </AuthButton>
           </div>
         </nav>
       </div>
