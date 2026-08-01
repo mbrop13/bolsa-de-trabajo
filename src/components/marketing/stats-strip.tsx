@@ -1,6 +1,7 @@
 import { Globe2, Gift, Briefcase, UserRound } from "lucide-react";
+import { isEarlyAccess } from "@/lib/config";
 
-const stats = [
+const statsOpen = [
   {
     icon: Briefcase,
     value: "Empleos",
@@ -27,7 +28,36 @@ const stats = [
   },
 ];
 
+const statsEarly = [
+  {
+    icon: UserRound,
+    value: "Perfiles",
+    label: "Construye tu presencia",
+    detail: "Skills, experiencia y proyectos",
+  },
+  {
+    icon: Briefcase,
+    value: "Empresas",
+    label: "Registro anticipado",
+    detail: "Onboarding y búsqueda de talento",
+  },
+  {
+    icon: Globe2,
+    value: "Red",
+    label: "Early access abierto",
+    detail: "Preparamos el lanzamiento",
+  },
+  {
+    icon: Gift,
+    value: "Gratis",
+    label: "Sin costo",
+    detail: "Para candidatos y empresas",
+  },
+];
+
 export function StatsStrip() {
+  const stats = isEarlyAccess() ? statsEarly : statsOpen;
+
   return (
     <section className="bg-white">
       <div className="container-page py-10 sm:py-12">

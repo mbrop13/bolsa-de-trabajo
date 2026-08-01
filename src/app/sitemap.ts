@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { demoJobs, demoCompanies, demoCandidates } from "@/lib/demo-data";
+import { isEarlyAccess } from "@/lib/config";
 
 const base = process.env.NEXT_PUBLIC_APP_URL || "https://reclu.app";
 
@@ -20,14 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.8,
   }));
 
-  const jobs = demoJobs
-    .filter((j) => j.status === "published")
-    .map((j) => ({
-      url: `${base}/empleos/${j.slug}`,
-      lastModified: new Date(j.updated_at),
-      changeFrequency: "daily" as const,
-      priority: 0.9,
-    }));
+  const jobs = isEarlyAccess()
+    ? []
+    : demoJobs
+        .filter((j) => j.status === "published")
+        .map((j) => ({
+          url: `${base}/empleos/${j.slug}`,
+          lastModified: new Date(j.updated_at),
+          changeFrequency: "daily" as const,
+          priority: 0.9,
+        }));
 
   const companies = demoCompanies
     .filter((c) => c.status === "approved")

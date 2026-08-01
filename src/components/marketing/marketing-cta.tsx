@@ -3,16 +3,28 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useAuthModal } from "@/components/auth/auth-modal-provider";
+import { isEarlyAccess } from "@/lib/config";
 import { ArrowRight, Building2, UserRound } from "lucide-react";
 
 export function MarketingCta({
-  title = "Tu próximo paso profesional empieza aquí",
-  description = "Crea tu perfil o registra tu empresa. Publicar y postular es gratis en el lanzamiento.",
+  title,
+  description,
 }: {
   title?: string;
   description?: string;
 }) {
   const { openAuth } = useAuthModal();
+  const early = isEarlyAccess();
+  const resolvedTitle =
+    title ??
+    (early
+      ? "Únete al early access de Reclu"
+      : "Tu próximo paso profesional empieza aquí");
+  const resolvedDescription =
+    description ??
+    (early
+      ? "Crea tu perfil o registra tu empresa ahora. Las vacantes se abren en el lanzamiento; las empresas ya pueden explorar talento."
+      : "Crea tu perfil o registra tu empresa. Publicar y postular es gratis en el lanzamiento.");
 
   return (
     <section className="relative overflow-hidden bg-slate-950 py-20 sm:py-24">
@@ -36,10 +48,10 @@ export function MarketingCta({
             ProgramBI × Reclu
           </p>
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            {title}
+            {resolvedTitle}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-slate-300 sm:text-lg">
-            {description}
+            {resolvedDescription}
           </p>
         </div>
 

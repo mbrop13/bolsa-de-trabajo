@@ -46,5 +46,19 @@ export function showDevChrome() {
   return process.env.NODE_ENV === "development";
 }
 
+/**
+ * Early access: se registran candidatos y empresas primero.
+ * Las vacantes públicas / postulaciones se abren en el lanzamiento completo.
+ * Las empresas SÍ pueden explorar talento desde su panel.
+ *
+ * Desactivar con NEXT_PUBLIC_EARLY_ACCESS=false
+ */
+export function isEarlyAccess() {
+  if (process.env.NEXT_PUBLIC_EARLY_ACCESS === "false") return false;
+  if (process.env.NEXT_PUBLIC_EARLY_ACCESS === "true") return true;
+  // Por defecto activo hasta el lanzamiento completo
+  return true;
+}
+
 /** Compat: nombre histórico usado en el código. */
 export const DEMO_MODE = usesLocalData();

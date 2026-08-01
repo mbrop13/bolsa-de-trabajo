@@ -5,11 +5,13 @@ import { AuthButton } from "@/components/auth/auth-button";
 import { FeaturedJobs } from "@/components/jobs/featured-jobs";
 import { HeroShowcase } from "@/components/marketing/hero-showcase";
 import { HeroSearch } from "@/components/marketing/hero-search";
+import { EarlyAccessPanel } from "@/components/marketing/early-access-panel";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { StatsStrip } from "@/components/marketing/stats-strip";
 import { Testimonials } from "@/components/marketing/testimonials";
 import { MarketingCta } from "@/components/marketing/marketing-cta";
 import { HomeCategories } from "@/components/marketing/home-categories";
+import { isEarlyAccess } from "@/lib/config";
 import {
   ArrowRight,
   CheckCircle2,
@@ -27,6 +29,8 @@ import {
 } from "lucide-react";
 
 export default function HomePage() {
+  const early = isEarlyAccess();
+
   return (
     <>
       {/* ——— HERO ——— */}
@@ -40,25 +44,55 @@ export default function HomePage() {
           <div className="animate-fade-up">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" />
-              Bolsa de trabajo · by ProgramBI
+              {early
+                ? "Early access · by ProgramBI"
+                : "Bolsa de trabajo · by ProgramBI"}
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.08]">
-              Encuentra mejores{" "}
-              <span className="text-gradient">oportunidades de empleo</span>
+              {early ? (
+                <>
+                  Únete primero.{" "}
+                  <span className="text-gradient">
+                    Las oportunidades llegan después
+                  </span>
+                </>
+              ) : (
+                <>
+                  Encuentra mejores{" "}
+                  <span className="text-gradient">oportunidades de empleo</span>
+                </>
+              )}
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
-              <strong className="font-semibold text-slate-800">Reclu</strong>{" "}
-              conecta talento con empresas. Perfil profesional, vacantes claras
-              y chat real en un solo lugar.
+              {early ? (
+                <>
+                  <strong className="font-semibold text-slate-800">
+                    Reclu
+                  </strong>{" "}
+                  está en early access: crea tu perfil o registra tu empresa
+                  ahora. Las vacantes y postulaciones se abren en el
+                  lanzamiento; las empresas ya pueden explorar talento.
+                </>
+              ) : (
+                <>
+                  <strong className="font-semibold text-slate-800">
+                    Reclu
+                  </strong>{" "}
+                  conecta talento con empresas. Perfil profesional, vacantes
+                  claras y chat real en un solo lugar.
+                </>
+              )}
             </p>
 
-            <div className="mt-8">
-              <HeroSearch />
-            </div>
+            {!early && (
+              <div className="mt-8">
+                <HeroSearch />
+              </div>
+            )}
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className={`flex flex-col gap-3 sm:flex-row sm:items-center ${early ? "mt-8" : "mt-7"}`}>
               <AuthButton
                 mode="register"
                 role="candidate"
@@ -69,7 +103,7 @@ export default function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </AuthButton>
               <AuthButton
-                mode="register"
+                mode="company"
                 role="company"
                 size="lg"
                 variant="outline"
@@ -81,11 +115,18 @@ export default function HomePage() {
             </div>
 
             <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2.5 text-sm text-slate-600">
-              {[
-                "Perfiles profesionales",
-                "Gratis en el lanzamiento",
-                "Postulaciones + chat",
-              ].map((item) => (
+              {(early
+                ? [
+                    "Registro anticipado de talento",
+                    "Empresas pueden buscar perfiles",
+                    "Vacantes en el lanzamiento",
+                  ]
+                : [
+                    "Perfiles profesionales",
+                    "Gratis en el lanzamiento",
+                    "Postulaciones + chat",
+                  ]
+              ).map((item) => (
                 <li key={item} className="inline-flex items-center gap-1.5">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
                   {item}
@@ -104,25 +145,31 @@ export default function HomePage() {
       <div className="bg-white">
         <StatsStrip />
 
-        {/* EMPLEOS DESTACADOS */}
+        {/* EARLY ACCESS o EMPLEOS DESTACADOS */}
         <section className="section-y">
           <div className="container-page">
-            <div className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading
-                align="left"
-                eyebrow="Oportunidades abiertas"
-                title="Empleos con información clara"
-                description="Seniority, modalidad y rangos salariales visibles. Menos sorpresas, mejores postulaciones."
-                className="max-w-xl"
-              />
-              <Link href="/empleos" className="shrink-0">
-                <Button variant="secondary" size="lg" className="shadow-sm">
-                  Ver todos los empleos
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
-            <FeaturedJobs limit={4} />
+            {early ? (
+              <EarlyAccessPanel />
+            ) : (
+              <>
+                <div className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                  <SectionHeading
+                    align="left"
+                    eyebrow="Oportunidades abiertas"
+                    title="Empleos con información clara"
+                    description="Seniority, modalidad y rangos salariales visibles. Menos sorpresas, mejores postulaciones."
+                    className="max-w-xl"
+                  />
+                  <Link href="/empleos" className="shrink-0">
+                    <Button variant="secondary" size="lg" className="shadow-sm">
+                      Ver todos los empleos
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+                <FeaturedJobs limit={4} />
+              </>
+            )}
           </div>
         </section>
 
@@ -386,17 +433,25 @@ export default function HomePage() {
                 Contrata talento con menos ruido
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                Publica vacantes con salario y modalidad claros, recibe
-                postulaciones estructuradas y conversa con candidatos desde un
-                solo panel.
+                {early
+                  ? "En early access puedes registrar tu empresa y explorar talento. Publicar vacantes se habilita tras la aprobación y el lanzamiento completo."
+                  : "Publica vacantes con salario y modalidad claros, recibe postulaciones estructuradas y conversa con candidatos desde un solo panel."}
               </p>
               <ul className="mt-8 space-y-3.5">
-                {[
-                  "Perfil de marca empleadora profesional",
-                  "Pipeline tipo kanban de candidatos",
-                  "Chat multi-mensaje con talento",
-                  "Publica vacantes y gestiona postulaciones",
-                ].map((t) => (
+                {(early
+                  ? [
+                      "Perfil de marca empleadora profesional",
+                      "Explora talento en la red",
+                      "Acceso limitado hasta aprobación",
+                      "Vacantes en el lanzamiento completo",
+                    ]
+                  : [
+                      "Perfil de marca empleadora profesional",
+                      "Pipeline tipo kanban de candidatos",
+                      "Chat multi-mensaje con talento",
+                      "Publica vacantes y gestiona postulaciones",
+                    ]
+                ).map((t) => (
                   <li key={t} className="flex gap-3 text-sm text-slate-700">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     {t}
@@ -422,19 +477,21 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* CATEGORÍAS */}
-        <section className="section-y">
-          <div className="container-page">
-            <SectionHeading
-              eyebrow="Áreas"
-              title="Encuentra roles por especialidad"
-              description="Explora vacantes por área y encuentra el rol que mejor se adapta a tu perfil."
-            />
-            <div className="mt-12">
-              <HomeCategories />
+        {/* CATEGORÍAS — solo con plataforma abierta */}
+        {!early && (
+          <section className="section-y">
+            <div className="container-page">
+              <SectionHeading
+                eyebrow="Áreas"
+                title="Encuentra roles por especialidad"
+                description="Explora vacantes por área y encuentra el rol que mejor se adapta a tu perfil."
+              />
+              <div className="mt-12">
+                <HomeCategories />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* PILARES */}
         <section className="section-y">

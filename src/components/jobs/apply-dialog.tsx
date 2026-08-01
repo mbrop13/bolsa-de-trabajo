@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Dialog } from "@/components/ui/dialog";
 import { DEMO_SESSION, useRecluStore } from "@/lib/store/reclu-store";
+import { isEarlyAccess } from "@/lib/config";
 import { toast } from "sonner";
 import { CheckCircle2, Send } from "lucide-react";
 import type { Job } from "@/types/database";
@@ -25,6 +26,7 @@ export function ApplyDialog({
   const candidateId = DEMO_SESSION.candidateId;
   const candidate = store.getCandidate(candidateId);
   const already = store.hasApplied(job.id, candidateId);
+  const early = isEarlyAccess();
   const completeness = profileCompleteness({
     photo: Boolean(candidate?.profiles?.avatar_url),
     headline: Boolean(candidate?.headline),
@@ -43,6 +45,13 @@ export function ApplyDialog({
   const [done, setDone] = useState(false);
 
   async function submit() {
+    if (early) {
+      toast.message("Postulaciones próximamente", {
+        description:
+          "Estamos en early access. Completa tu perfil; podrás postular en el lanzamiento.",
+      });
+      return;
+    }
     setLoading(true);
     // slight delay for premium feel
     await new Promise((r) => setTimeout(r, 280));

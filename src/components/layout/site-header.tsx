@@ -7,11 +7,15 @@ import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AuthButton } from "@/components/auth/auth-button";
+import { isEarlyAccess } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Menu, Search, X } from "lucide-react";
+import { toast } from "sonner";
+
+const early = isEarlyAccess();
 
 const nav = [
-  { href: "/empleos", label: "Empleos" },
+  { href: "/empleos", label: early ? "Próximamente" : "Empleos" },
   { href: "/empresas", label: "Empresas" },
   { href: "/precios", label: "Precios" },
   { href: "/faq", label: "Ayuda" },
@@ -84,6 +88,14 @@ export function SiteHeader() {
 
   function submitSearch(e: React.FormEvent) {
     e.preventDefault();
+    if (early) {
+      toast.message("Vacantes próximamente", {
+        description:
+          "Estamos en early access. Crea tu perfil; las vacantes se abren en el lanzamiento.",
+      });
+      closeMenus();
+      return;
+    }
     const query = q.trim();
     router.push(query ? `/empleos?q=${encodeURIComponent(query)}` : "/empleos");
     closeMenus();

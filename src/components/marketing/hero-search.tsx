@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Search, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { isEarlyAccess } from "@/lib/config";
+import { toast } from "sonner";
 
 const SHORTCUTS = [
   { label: "React", href: "/empleos?q=React" },
@@ -16,9 +18,17 @@ const SHORTCUTS = [
 export function HeroSearch() {
   const router = useRouter();
   const [q, setQ] = useState("");
+  const early = isEarlyAccess();
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (early) {
+      toast.message("Vacantes próximamente", {
+        description:
+          "Estamos en early access. Crea tu perfil; las vacantes se abren en el lanzamiento.",
+      });
+      return;
+    }
     const query = q.trim();
     router.push(query ? `/empleos?q=${encodeURIComponent(query)}` : "/empleos");
   }
@@ -62,7 +72,16 @@ export function HeroSearch() {
           <button
             key={s.label}
             type="button"
-            onClick={() => router.push(s.href)}
+            onClick={() => {
+              if (early) {
+                toast.message("Vacantes próximamente", {
+                  description:
+                    "Estamos en early access. Las vacantes se abren en el lanzamiento.",
+                });
+                return;
+              }
+              router.push(s.href);
+            }}
             className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 transition hover:border-primary/35 hover:bg-primary-soft hover:text-primary"
           >
             {s.label}

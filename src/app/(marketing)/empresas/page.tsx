@@ -27,11 +27,11 @@ export default function EmpresasPage() {
   return (
     <div className="min-h-[70vh] bg-surface">
       <PageHero
-        eyebrow="Directorio"
+        eyebrow="Early access"
         title="Empresas en Reclu"
-        description="Explora organizaciones que publican vacantes y su cultura de trabajo."
+        description="Registra tu empresa, completa el perfil y explora talento. Las vacantes públicas se abren en el lanzamiento."
       >
-        <AuthButton mode="register" role="company" size="lg">
+        <AuthButton mode="company" role="company" size="lg">
           Registrar mi empresa
           <ArrowRight className="h-4 w-4" />
         </AuthButton>
