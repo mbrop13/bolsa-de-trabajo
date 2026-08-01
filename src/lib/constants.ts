@@ -1,7 +1,7 @@
 export const BRAND = {
   name: "Reclu",
   company: "ProgramBI",
-  tagline: "La bolsa de trabajo tech de ProgramBI",
+  tagline: "La bolsa de trabajo de ProgramBI",
   primary: "#1890ff",
 } as const;
 

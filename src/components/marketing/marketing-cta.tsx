@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2, UserRound } from "lucide-react";
 
 export function MarketingCta({
-  title = "Tu próximo paso en tech empieza aquí",
+  title = "Tu próximo paso profesional empieza aquí",
   description = "Crea tu perfil o registra tu empresa. Publicar y postular es gratis en el lanzamiento.",
 }: {
   title?: string;
@@ -49,7 +49,7 @@ export function MarketingCta({
             </div>
             <p className="mt-4 text-lg font-semibold text-white">Soy candidato</p>
             <p className="mt-1.5 text-sm leading-relaxed text-slate-400">
-              Crea tu perfil profesional y postula a vacantes tech verificadas.
+              Crea tu perfil profesional y postula a vacantes de empresas verificadas.
             </p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition group-hover:gap-2.5">
               Empezar gratis
@@ -66,7 +66,7 @@ export function MarketingCta({
             </div>
             <p className="mt-4 text-lg font-semibold text-white">Soy empresa</p>
             <p className="mt-1.5 text-sm leading-relaxed text-slate-400">
-              Publica vacantes claras y conecta con talento de programación y datos.
+              Publica vacantes claras y conecta con talento calificado.
             </p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition group-hover:gap-2.5">
               Registrar empresa

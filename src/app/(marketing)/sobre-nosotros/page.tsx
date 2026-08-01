@@ -13,7 +13,7 @@ import {
 export const metadata = {
   title: "Sobre nosotros",
   description:
-    "Reclu es la bolsa de trabajo tech de ProgramBI. Conectamos formación y empleo en Latinoamérica.",
+    "Reclu es la bolsa de trabajo de ProgramBI. Conectamos formación y empleo en Latinoamérica.",
 };
 
 const values = [
@@ -35,7 +35,7 @@ const values = [
   {
     icon: HeartHandshake,
     title: "Comunidad ProgramBI",
-    body: "Un puente natural entre quienes se forman con nosotros y el mercado laboral tech.",
+    body: "Un puente natural entre quienes se forman con nosotros y el mercado laboral.",
   },
 ];
 
@@ -44,8 +44,8 @@ export default function SobreNosotrosPage() {
     <>
       <PageHero
         eyebrow="ProgramBI × Reclu"
-        title="Conectamos formación y empleo tech en LATAM"
-        description="ProgramBI forma profesionales en programación y datos. Reclu es la plataforma donde ese talento y las empresas se encuentran con seriedad."
+        title="Conectamos formación y empleo en LATAM"
+        description="ProgramBI forma profesionales listos para el mercado. Reclu es la plataforma donde ese talento y las empresas se encuentran con seriedad."
       >
         <div className="flex flex-wrap gap-3">
           <Link href="/auth/registro">
@@ -72,27 +72,26 @@ export default function SobreNosotrosPage() {
             <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
               <p>
                 <strong className="text-slate-900">ProgramBI</strong> nació para
-                formar personas en programación, datos y tecnología con un
-                enfoque práctico. Vimos de cerca un problema: el salto al
-                mercado laboral es confuso, lleno de portales genéricos y
-                procesos opacos.
+                formar personas con un enfoque práctico. Vimos de cerca un
+                problema: el salto al mercado laboral es confuso, lleno de
+                portales genéricos y procesos opacos.
               </p>
               <p>
                 <strong className="text-slate-900">Reclu</strong> es nuestra
-                respuesta: una bolsa de trabajo pensada para el ecosistema tech
-                de Latinoamérica, con perfiles profesionales, empresas
-                verificadas y herramientas reales de postulación y contacto.
+                respuesta: una bolsa de trabajo pensada para Latinoamérica, con
+                perfiles profesionales, empresas verificadas y herramientas
+                reales de postulación y contacto.
               </p>
               <p>
                 No queremos ser “otro tablero de avisos”. Queremos ser el lugar
                 donde se construye confianza entre quienes aprenden, quienes ya
-                trabajan en tech y quienes contratan.
+                trabajan y quienes contratan.
               </p>
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { k: "Foco", v: "Tech & data LATAM" },
+              { k: "Foco", v: "Empleo en LATAM" },
               { k: "Candidatos", v: "Perfiles detallados" },
               { k: "Empresas", v: "Aprobación manual" },
               { k: "Proceso", v: "Postular + chat" },
@@ -140,7 +139,7 @@ export default function SobreNosotrosPage() {
 
       <MarketingCta
         title="Sé parte de la red"
-        description="Candidatos, alumni ProgramBI y empresas tech: hay un lugar para ti en Reclu."
+        description="Candidatos, alumni ProgramBI y empresas: hay un lugar para ti en Reclu."
       />
     </>
   );

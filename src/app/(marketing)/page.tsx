@@ -40,17 +40,17 @@ export default function HomePage() {
           <div className="animate-fade-up">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" />
-              Bolsa de trabajo tech · by ProgramBI
+              Bolsa de trabajo · by ProgramBI
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.35rem] lg:leading-[1.08]">
-              Encuentra tu próximo rol tech en{" "}
+              Encuentra tu próximo empleo en{" "}
               <span className="text-gradient">Latinoamérica</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
               <strong className="font-semibold text-slate-800">Reclu</strong>{" "}
-              conecta talento de programación y datos con empresas{" "}
+              conecta talento con empresas{" "}
               <strong className="font-semibold text-slate-800">verificadas</strong>
               . Perfil profesional, vacantes claras y chat real.
             </p>
@@ -111,7 +111,7 @@ export default function HomePage() {
             <SectionHeading
               align="left"
               eyebrow="Oportunidades abiertas"
-              title="Empleos tech con información clara"
+              title="Empleos con información clara"
               description="Seniority, modalidad y rangos salariales visibles. Menos sorpresas, mejores postulaciones."
               className="max-w-xl"
             />
@@ -192,7 +192,7 @@ export default function HomePage() {
               Para candidatos
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Tu carrera tech, con un perfil que se entiende
+              Tu carrera, con un perfil que se entiende
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-600">
               Si buscas tu primer empleo, un salto de seniority o un rol remoto
@@ -380,7 +380,7 @@ export default function HomePage() {
               Para empresas
             </Badge>
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Contrata talento tech con menos ruido
+              Contrata talento con menos ruido
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-slate-600">
               Publica vacantes con salario y modalidad claros, recibe
@@ -422,7 +422,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Áreas"
             title="Encuentra roles por especialidad"
-            description="Desde programación y data hasta producto, cloud e IA."
+            description="Explora vacantes por área y encuentra el rol que mejor se adapta a tu perfil."
           />
           <div className="mt-12">
             <HomeCategories />
@@ -435,7 +435,7 @@ export default function HomePage() {
         <div className="container-page">
           <SectionHeading
             eyebrow="Qué es Reclu"
-            title="Una plataforma de empleo tech, no un tablón genérico"
+            title="Una plataforma de empleo profesional, no un tablón genérico"
             description="Reclu une tres piezas que suelen estar separadas: perfil profesional, vacantes transparentes y conversación real con reclutadores — con el respaldo de ProgramBI."
           />
           <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -490,9 +490,9 @@ export default function HomePage() {
               Del aprendizaje al empleo, en la misma red
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
-              ProgramBI forma profesionales en programación y datos. Reclu es el
-              puente hacia el mercado laboral: perfiles serios, empresas
-              cuidadas y procesos transparentes.
+              ProgramBI forma profesionales listos para el mercado. Reclu es el
+              puente hacia el empleo: perfiles serios, empresas cuidadas y
+              procesos transparentes.
             </p>
             <Link href="/sobre-nosotros" className="mt-8 inline-block">
               <Button
@@ -551,7 +551,7 @@ export default function HomePage() {
             {[
               {
                 q: "¿Qué es exactamente Reclu?",
-                a: "Es la bolsa de trabajo tech de ProgramBI: perfiles profesionales, vacantes de empresas verificadas, postulaciones y chat con reclutadores en Latinoamérica.",
+                a: "Es la bolsa de trabajo de ProgramBI: perfiles profesionales, vacantes de empresas verificadas, postulaciones y chat con reclutadores en Latinoamérica.",
               },
               {
                 q: "¿Es gratis?",

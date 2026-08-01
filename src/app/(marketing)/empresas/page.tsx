@@ -10,7 +10,7 @@ import { MapPin, Sparkles, ArrowRight } from "lucide-react";
 export const metadata = {
   title: "Empresas",
   description:
-    "Directorio de empresas tech verificadas que contratan en Reclu by ProgramBI.",
+    "Directorio de empresas verificadas que contratan en Reclu by ProgramBI.",
 };
 
 export default function EmpresasPage() {
@@ -27,8 +27,8 @@ export default function EmpresasPage() {
     <div className="min-h-[70vh] bg-surface">
       <PageHero
         eyebrow="Directorio"
-        title="Empresas tech verificadas"
-        description="Organizaciones revisadas por el equipo de Reclu / ProgramBI. Explora su cultura, stack y vacantes abiertas."
+        title="Empresas verificadas"
+        description="Organizaciones revisadas por el equipo de Reclu / ProgramBI. Explora su cultura y vacantes abiertas."
       >
         <Link href="/auth/registro/empresa">
           <Button size="lg">

@@ -19,11 +19,11 @@ export default function AuthLayout({
           <div className="relative">
             <Logo href="/" showTagline variant="light" />
             <h1 className="mt-16 max-w-md text-3xl font-bold tracking-tight xl:text-4xl">
-              La bolsa de trabajo tech de ProgramBI
+              La bolsa de trabajo de ProgramBI
             </h1>
             <p className="mt-4 max-w-sm text-base leading-relaxed text-slate-300">
               Perfiles profesionales, empresas verificadas y chat con
-              reclutadores. Hecha para el ecosistema tech de Latinoamérica.
+              reclutadores. Hecha para el talento y las empresas de Latinoamérica.
             </p>
             <ul className="mt-10 space-y-4 text-sm text-slate-200">
               {[

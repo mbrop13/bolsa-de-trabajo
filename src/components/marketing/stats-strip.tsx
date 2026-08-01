@@ -9,9 +9,9 @@ const stats = [
   },
   {
     icon: Briefcase,
-    value: "Tech first",
-    label: "Roles de programación y datos",
-    detail: "Sin ruido de portales genéricos",
+    value: "Empleos",
+    label: "Vacantes con información clara",
+    detail: "Seniority, modalidad y salario",
   },
   {
     icon: Globe2,

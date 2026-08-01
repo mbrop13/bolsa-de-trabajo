@@ -22,7 +22,7 @@ export default function RegistroPage() {
           <div>
             <p className="font-semibold text-slate-900">Soy candidato/a</p>
             <p className="mt-0.5 text-sm text-muted-foreground">
-              Crea tu perfil profesional y postula a vacantes tech
+              Crea tu perfil profesional y postula a vacantes
             </p>
           </div>
         </Link>

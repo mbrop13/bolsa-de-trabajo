@@ -9,8 +9,8 @@ export function SiteFooter() {
           <div className="md:col-span-1">
             <Logo showTagline />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              La bolsa de trabajo tech de ProgramBI. Conectamos talento de
-              programación y datos con empresas que crecen en Latinoamérica.
+              La bolsa de trabajo de ProgramBI. Conectamos talento con empresas
+              que crecen en Latinoamérica.
             </p>
           </div>
           <div>
@@ -90,7 +90,7 @@ export function SiteFooter() {
             © {new Date().getFullYear()} Reclu by ProgramBI. Todos los derechos
             reservados.
           </p>
-          <p>Hecho para el ecosistema tech de Latinoamérica.</p>
+          <p>Hecho para el talento y las empresas de Latinoamérica.</p>
         </div>
       </div>
     </footer>

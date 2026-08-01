@@ -16,15 +16,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Reclu — Bolsa de trabajo tech by ProgramBI",
+    default: "Reclu — Bolsa de trabajo by ProgramBI",
     template: "%s | Reclu",
   },
   description:
-    "Encuentra empleos de programación, data y tech en Latinoamérica. Perfiles profesionales y empresas verificadas. By ProgramBI.",
+    "Encuentra empleo en Latinoamérica. Perfiles profesionales y empresas verificadas. By ProgramBI.",
   keywords: [
     "bolsa de trabajo",
-    "empleos programación",
-    "tech jobs LATAM",
+    "empleos LATAM",
+    "trabajo Latinoamérica",
     "ProgramBI",
     "Reclu",
   ],

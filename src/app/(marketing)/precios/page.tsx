@@ -17,7 +17,7 @@ export default function PreciosPage() {
       <PageHero
         eyebrow="Precios transparentes"
         title="Gratis en el lanzamiento. Valor desde el día uno."
-        description="Publicar vacantes, postular y chatear no tiene costo mientras abrimos la red tech de ProgramBI en LATAM."
+        description="Publicar vacantes, postular y chatear no tiene costo mientras abrimos la red de ProgramBI en LATAM."
       />
 
       <section className="container-page py-16 sm:py-20">
@@ -37,8 +37,7 @@ export default function PreciosPage() {
               <span className="text-muted-foreground">/ siempre</span>
             </div>
             <p className="mt-3 text-slate-600">
-              Para quien busca empleo tech: perfil, postulaciones y chat sin
-              pagar.
+              Para quien busca empleo: perfil, postulaciones y chat sin pagar.
             </p>
             <ul className="mt-8 space-y-3">
               {[

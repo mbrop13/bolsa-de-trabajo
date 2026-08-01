@@ -126,10 +126,10 @@ export function EmpleosClient() {
         <div className="pointer-events-none absolute -right-16 top-0 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
         <div className="container-page relative py-12 sm:py-14">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-            Bolsa de trabajo tech
+            Bolsa de trabajo
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Empleos en programación, data y más
+            Empleos en Latinoamérica
           </h1>
           <p className="mt-3 max-w-2xl text-base text-slate-600 sm:text-lg">
             {store.ready ? (
