@@ -1,17 +1,17 @@
-import { ShieldCheck, Globe2, Gift, Briefcase } from "lucide-react";
+import { Globe2, Gift, Briefcase, UserRound } from "lucide-react";
 
 const stats = [
-  {
-    icon: ShieldCheck,
-    value: "100%",
-    label: "Empresas verificadas",
-    detail: "Antes de publicar y contactar",
-  },
   {
     icon: Briefcase,
     value: "Empleos",
     label: "Vacantes con información clara",
     detail: "Seniority, modalidad y salario",
+  },
+  {
+    icon: UserRound,
+    value: "Perfiles",
+    label: "Profesionales y completos",
+    detail: "Skills, experiencia y proyectos",
   },
   {
     icon: Globe2,
@@ -29,16 +29,11 @@ const stats = [
 
 export function StatsStrip() {
   return (
-    <section className="relative border-y border-border/80 bg-white">
-      <div className="container-page py-8 sm:py-10">
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-0">
-          {stats.map((s, i) => (
-            <div
-              key={s.label}
-              className={`flex flex-col gap-1 sm:px-4 lg:px-6 ${
-                i > 0 ? "lg:border-l lg:border-border/80" : ""
-              }`}
-            >
+    <section className="bg-white">
+      <div className="container-page py-10 sm:py-12">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-6">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col gap-1">
               <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-primary-soft text-primary">
                 <s.icon className="h-4 w-4" />
               </div>

@@ -12,7 +12,7 @@ const items = [
   },
   {
     quote:
-      "La verificación de empresas y el pipeline de postulaciones nos ahorró ruido. Llegamos a candidatos con contexto real de su experiencia.",
+      "El pipeline de postulaciones y los perfiles con contexto real nos facilitaron filtrar y conversar con mejores candidatos.",
     name: "Diego R.",
     role: "Head of Talent · Nubix Labs",
     initials: "DR",
@@ -30,7 +30,7 @@ const items = [
 
 export function Testimonials() {
   return (
-    <section className="border-y border-border/80 bg-surface-soft section-y">
+    <section className="section-y bg-white">
       <div className="container-page">
         <SectionHeading
           eyebrow="Historias del ecosistema"

@@ -49,7 +49,7 @@ export function MarketingCta({
             </div>
             <p className="mt-4 text-lg font-semibold text-white">Soy candidato</p>
             <p className="mt-1.5 text-sm leading-relaxed text-slate-400">
-              Crea tu perfil profesional y postula a vacantes de empresas verificadas.
+              Crea tu perfil profesional y postula a vacantes abiertas.
             </p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition group-hover:gap-2.5">
               Empezar gratis
